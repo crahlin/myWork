@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+				body {
+					text-align: center;
+				}
+				table, th, td {
+					border-collapse: collapse;
+					border: 1px solid black;
+					padding: 10px;
+					width: 50px;
+					margin: auto;
+				}
+				.deck {
+					background-color: powderblue;
+					height: 280px;
+					width: 200px;					
+				}						
+				div {
+					height: 280px;
+					width: 200px;
+				}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>
+					<div class="deck">Player 1 Deck</div>
+				</td>
+				<td>
+					<div id="display1"></div>
+				</td>
+				<td>
+					<div id="display2"></div>
+				</td>
+				<td>
+					<div class="deck">Player 2 Deck</div>
+				</td>
+			</tr>
+		</table>
+			<button onclick="flipCard1(flippedCard1); flipCard2(flippedCard2);">Flip Cards</button>
+		<script>
+			var card = [];
+			var flippedCard1 = [];
+			var flippedCard2 = [];
+
+			// Builds Deck
+			function makeDeck() {
+				var myDeck = [];
+				for (var i = 0; i < 4; i++) {
+					for (var j = 0; j < 13; j++) {
+					var suit = ["Clubs","Diamonds","Hearts","Spades"]
+					var rank = ["Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"]
+					var tempCard = {
+						name : rank[j] + " " + suit[i],
+						value : j + 2,
+						suit : suit[i]
+					}
+				myDeck.push(tempCard);
+					}
+				}
+				return myDeck;
+			}			
+			
+			// Shuffle Deck v2
+			function shuffle2(deck) {
+				var deck2 = [];
+				while (deck.length > 0) {
+					var randomCard = Math.floor(Math.random() * deck.length)
+					var takenCards = deck.splice(randomCard,1) // splice returns an array, not a single card
+					deck2.push(takenCards[0]) // add the single card from takenCards array to temp deck2
+				}
+				return deck2;
+			}
+			
+			// Deal Cards
+			function deal1(shuffDeck) {
+				var dealt1 = [];	
+				
+				while(shuffDeck.length > 26){
+					var p1 = shuffDeck.splice(0, 1)
+					dealt1.push(p1[0])	
+				}				
+				return dealt1;				
+			}	
+			
+			function deal2(shuffDeck) {
+				var dealt2 = [];				
+				
+				while(shuffDeck.length > 0) {
+					var p2 = shuffDeck.splice(0, 1)
+					dealt2.push(p2[0])	
+				}					
+				return dealt2;
+			}		
+			
+			function flipCard1(deck1) {
+				displayed1 = [];
+				var taken1 = deck1.splice(0, 1)
+				displayed1.push(taken1[0])
+				
+				document.getElementById("display1").innerHTML = JSON.stringify(displayed1);
+			}
+			
+			function flipCard2(deck2) {
+				displayed2 = [];
+				var taken2 = deck2.splice(0, 1)
+				displayed2.push(taken2[0])
+				
+				document.getElementById("display2").innerHTML = JSON.stringify(displayed2);
+			}
+						
+			card = makeDeck();
+			card = shuffle2(card);
+			flippedCard1 = deal1(card);
+			flippedCard2 = deal2(card);
+			
+			console.log(flippedCard1);
+			console.log(flippedCard2);
+			
+		</script>
+	</body>
+</html>
