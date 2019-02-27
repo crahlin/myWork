@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<body>
+		<div>
+			<p id="result">Total</p> 
+			<button id="event">Get Total</button>
+			<p id="result2">0</p> 
+			<button id="event2">Increase Number by 1</button>
+			<p id="result3">0</p> 
+			<button id="event3">Decrease Number by 1</button>
+		</div>
+	</body>
+	<script>
+		function myTotal() {
+			
+			var a = Math.floor(Math.random() * 6) + 1;
+			var b = Math.floor(Math.random() * 6) + 1;
+			var c = Math.floor(Math.random() * 6) + 1;
+			var d = Math.floor(Math.random() * 6) + 1;
+			var e = Math.floor(Math.random() * 6) + 1;
+			var f = Math.floor(Math.random() * 6) + 1;
+			var g = Math.floor(Math.random() * 6) + 1;
+			var h = Math.floor(Math.random() * 6) + 1;
+			var i = Math.floor(Math.random() * 6) + 1;
+			var j = Math.floor(Math.random() * 6) + 1;
+			var k = Math.floor(Math.random() * 6) + 1;
+			var l = Math.floor(Math.random() * 6) + 1;
+			var total = Math.floor(Math.random() * 6) + 1
+			
+			document.getElementById("result").innerHTML = a + b + c + d + e + f + g + h + i + j + k + l;
+		}
+		function increase () {
+		
+			increased++;
+			document.getElementById("result2").innerHTML = increased;
+			
+		}
+		
+		function decrease () {
+		
+			decreased--;
+			document.getElementById("result3").innerHTML = decreased;
+		}
+		
+			var decreased = 0
+			var increased = 0
+			document.getElementById("event").addEventListener("click", myTotal)
+			document.getElementById("event2").addEventListener("click", increase)
+			document.getElementById("event3").addEventListener("click", decrease)
+			
+	</script>
+</html>

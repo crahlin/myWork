@@ -1,0 +1,344 @@
+<!doctype html>
+<head>
+	<style>
+		table {
+			margin: auto;
+			width: 50px;
+		}
+		#fancy {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			margin: auto;
+			width: 50px;
+		}
+
+		#fancy td, #fancy th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		#fancy tr:nth-child(even){background-color: #f2f2f2;}
+
+		#fancy tr:hover {background-color: #ddd;}
+
+		#fancy th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: grey;
+			color: white;
+		}
+	</style>
+</head>
+<script>
+</script>
+
+<body>
+	<table id="fancy">
+		<tr>
+			<th>Player</th>
+			<th>Position</th>
+			<th>Games Played</th>
+			<th>Goals</th>
+			<th>Assists</th>			
+		</tr>
+		<tr>
+			<td>Alex Ovechkin</td>
+			<td>Left Wing</td>
+			<td>
+				<div id="value1"></div>
+				<input type='button' id="myButton1" value="+">				
+			</td>
+			<td>
+				<div id="value2"></div>
+				<input type='button' id="myButton2" value="+">
+			</td>
+			<td>
+				<div id="value3"></div>
+				<input type='button' id="myButton3" value="+">				
+			</td>
+		</tr>
+		<tr>
+			<td>Nicklas Backstrom</td>
+			<td>Centre</td>
+			<td>
+				<div id="value21"></div>
+				<input type='button' id="myButton21" value="+">				
+			</td>
+			<td>
+				<div id="value22"></div>
+				<input type='button' id="myButton22" value="+">
+			</td>
+			<td>
+				<div id="value23"></div>
+				<input type='button' id="myButton23" value="+">				
+			</td>
+		</tr>
+		<tr>
+			<td>T.J Oshie</td>
+			<td>Right Wing</td>
+			<td>
+				<div id="value31"></div>
+				<input type='button' id="myButton31" value="+">				
+			</td>
+			<td>
+				<div id="value32"></div>
+				<input type='button' id="myButton32" value="+">
+			</td>
+			<td>
+				<div id="value33"></div>
+				<input type='button' id="myButton33" value="+">				
+			</td>
+		</tr>
+		<tr>
+			<td>Dmitri Orlov</td>
+			<td>Left Defense</td>
+			<td>
+				<div id="value41"></div>
+				<input type='button' id="myButton41" value="+">				
+			</td>
+			<td>
+				<div id="value42"></div>
+				<input type='button' id="myButton42" value="+">
+			</td>
+			<td>
+				<div id="value43"></div>
+				<input type='button' id="myButton43" value="+">				
+			</td>
+		</tr>
+		<tr>
+			<td>John Carlson</td>
+			<td>Right Defense</td>
+			<td>
+				<div id="value51"></div>
+				<input type='button' id="myButton51" value="+">				
+			</td>
+			<td>
+				<div id="value52"></div>
+				<input type='button' id="myButton52" value="+">
+			</td>
+			<td>
+				<div id="value53"></div>
+				<input type='button' id="myButton53" value="+">				
+			</td>
+		</tr>
+	</table>	
+</body>
+
+<script>
+	var AO = {};	
+	
+	if (localStorage.getItem("storedVar1")) {
+		var temp1 = JSON.parse(localStorage.getItem("storedVar1"));
+		AO = temp1;
+		}
+	else
+		AO = { 	
+			gamesPlayed: 0, 
+			goals: 0,
+			assists: 0,
+		};
+	
+	document.getElementById("myButton1").addEventListener("click",myButtonClicked1);
+	document.getElementById("value1").innerHTML = AO.gamesPlayed;
+	
+	function myButtonClicked1() {
+		AO.gamesPlayed++;
+		document.getElementById("value1").innerHTML = AO.gamesPlayed;
+		var temp1 = JSON.stringify(AO);
+		localStorage.setItem("storedVar1",temp1);
+	}
+	
+	document.getElementById("myButton2").addEventListener("click",myButtonClicked2);
+	document.getElementById("value2").innerHTML = AO.goals;
+	
+	function myButtonClicked2() {
+		AO.goals++;
+		document.getElementById("value2").innerHTML = AO.goals;
+		var temp1 = JSON.stringify(AO);
+		localStorage.setItem("storedVar1",temp1);
+	}
+	
+	document.getElementById("myButton3").addEventListener("click",myButtonClicked3);
+	document.getElementById("value3").innerHTML = AO.assists;
+	
+	function myButtonClicked3() {
+		AO.assists++;
+		document.getElementById("value3").innerHTML = AO.assists;
+		var temp1 = JSON.stringify(AO);
+		localStorage.setItem("storedVar1",temp1);
+	}
+	
+	var NB = {};	
+	
+	if (localStorage.getItem("storedVar2")) {
+		var temp2 = JSON.parse(localStorage.getItem("storedVar2"));
+		NB = temp2;
+		}
+	else
+		NB = { 	
+			gamesPlayed: 0, 
+			goals: 0,
+			assists: 0,
+		};
+	
+	document.getElementById("myButton21").addEventListener("click",myButtonClicked21);
+	document.getElementById("value21").innerHTML = NB.gamesPlayed;
+	
+	function myButtonClicked21() {
+		NB.gamesPlayed++;
+		document.getElementById("value21").innerHTML = NB.gamesPlayed;
+		var temp2 = JSON.stringify(NB);
+		localStorage.setItem("storedVar2",temp2);
+	}
+	
+	document.getElementById("myButton22").addEventListener("click",myButtonClicked22);
+	document.getElementById("value22").innerHTML = NB.goals;
+	
+	function myButtonClicked22() {
+		NB.goals++;
+		document.getElementById("value22").innerHTML = NB.goals;
+		var temp2 = JSON.stringify(NB);
+		localStorage.setItem("storedVar2",temp2);
+	}
+	
+	document.getElementById("myButton23").addEventListener("click",myButtonClicked23);
+	document.getElementById("value23").innerHTML = NB.assists;
+	
+	function myButtonClicked23() {
+		NB.assists++;
+		document.getElementById("value23").innerHTML = NB.assists;
+		var temp2 = JSON.stringify(NB);
+		localStorage.setItem("storedVar2",temp2);
+	}
+	
+	var TJO = {};	
+	
+	if (localStorage.getItem("storedVar3")) {
+		var temp3 = JSON.parse(localStorage.getItem("storedVar3"));
+		TJO = temp3;
+		}
+	else
+		TJO = { 	
+			gamesPlayed: 0, 
+			goals: 0,
+			assists: 0,
+		};
+	
+	document.getElementById("myButton31").addEventListener("click",myButtonClicked31);
+	document.getElementById("value31").innerHTML = TJO.gamesPlayed;
+	
+	function myButtonClicked31() {
+		TJO.gamesPlayed++;
+		document.getElementById("value31").innerHTML = TJO.gamesPlayed;
+		var temp3 = JSON.stringify(TJO);
+		localStorage.setItem("storedVar3",temp3);
+	}
+	
+	document.getElementById("myButton32").addEventListener("click",myButtonClicked32);
+	document.getElementById("value32").innerHTML = TJO.goals;
+	
+	function myButtonClicked32() {
+		TJO.goals++;
+		document.getElementById("value32").innerHTML = TJO.goals;
+		var temp3 = JSON.stringify(TJO);
+		localStorage.setItem("storedVar3",temp3);
+	}
+	
+	document.getElementById("myButton33").addEventListener("click",myButtonClicked33);
+	document.getElementById("value33").innerHTML = TJO.assists;
+	
+	function myButtonClicked33() {
+		TJO.assists++;
+		document.getElementById("value33").innerHTML = TJO.assists;
+		var temp3 = JSON.stringify(TJO);
+		localStorage.setItem("storedVar3",temp3);
+	}
+	
+	var DO = {};	
+	
+	if (localStorage.getItem("storedVar4")) {
+		var temp4 = JSON.parse(localStorage.getItem("storedVar4"));
+		DO = temp4;
+		}
+	else
+		DO = { 	
+			gamesPlayed: 0, 
+			goals: 0,
+			assists: 0,
+		};
+	
+	document.getElementById("myButton41").addEventListener("click",myButtonClicked41);
+	document.getElementById("value41").innerHTML = DO.gamesPlayed;
+	
+	function myButtonClicked41() {
+		DO.gamesPlayed++;
+		document.getElementById("value41").innerHTML = DO.gamesPlayed;
+		var temp4 = JSON.stringify(DO);
+		localStorage.setItem("storedVar4",temp4);
+	}
+	
+	document.getElementById("myButton42").addEventListener("click",myButtonClicked42);
+	document.getElementById("value42").innerHTML = DO.goals;
+	
+	function myButtonClicked42() {
+		DO.goals++;
+		document.getElementById("value42").innerHTML = DO.goals;
+		var temp4 = JSON.stringify(DO);
+		localStorage.setItem("storedVar4",temp4);
+	}
+	
+	document.getElementById("myButton43").addEventListener("click",myButtonClicked43);
+	document.getElementById("value43").innerHTML = DO.assists;
+	
+	function myButtonClicked43() {
+		DO.assists++;
+		document.getElementById("value43").innerHTML = DO.assists;
+		var temp4 = JSON.stringify(DO);
+		localStorage.setItem("storedVar4",temp4);
+	}
+	
+	var JC = {};	
+	
+	if (localStorage.getItem("storedVar5")) {
+		var temp5 = JSON.parse(localStorage.getItem("storedVar5"));
+		JC = temp5;
+		}
+	else
+		JC = { 	
+			gamesPlayed: 0, 
+			goals: 0,
+			assists: 0,
+		};
+	
+	document.getElementById("myButton51").addEventListener("click",myButtonClicked51);
+	document.getElementById("value51").innerHTML = JC.gamesPlayed;
+	
+	function myButtonClicked51() {
+		JC.gamesPlayed++;
+		document.getElementById("value51").innerHTML = JC.gamesPlayed;
+		var temp5 = JSON.stringify(JC);
+		localStorage.setItem("storedVar5",temp5);
+	}
+	
+	document.getElementById("myButton52").addEventListener("click",myButtonClicked52);
+	document.getElementById("value52").innerHTML = JC.goals;
+	
+	function myButtonClicked52() {
+		JC.goals++;
+		document.getElementById("value52").innerHTML = JC.goals;
+		var temp5 = JSON.stringify(JC);
+		localStorage.setItem("storedVar5",temp5);
+	}
+	
+	document.getElementById("myButton53").addEventListener("click",myButtonClicked53);
+	document.getElementById("value53").innerHTML = JC.assists;
+	
+	function myButtonClicked53() {
+		JC.assists++;
+		document.getElementById("value53").innerHTML = JC.assists;
+		var temp5 = JSON.stringify(JC);
+		localStorage.setItem("storedVar5",temp5);
+	}
+	
+</script>
